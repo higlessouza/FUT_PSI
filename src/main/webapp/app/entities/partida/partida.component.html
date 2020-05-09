@@ -22,13 +22,13 @@
         <div class="row">
             <div *ngFor="let partida of partidas ;trackBy: trackId">
                 <div class="col">
-                    <div class="card border-secondary mb-3 cardTeam" style="max-width: 18rem;">
+                    <div class="card border-secondary mb-3 cardTeam">
                         <div class="card-header">{{ partida.mandante?.nome }} x {{ partida.visitante?.nome }}
                         </div>
                         <div class="card-body text-secondary">
                             <h5 class="card-title">{{ partida.local }}</h5>
                             <div id="externa">
-                                <div id="interna">
+                                <div class="interna">
                                     <div class="row">
                                         <img src="{{ partida.mandante?.logo }}" alt="{{ partida.mandante?.nome }}"
                                             width="50">
@@ -37,6 +37,24 @@
                                             width="50">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="submit" [routerLink]="['/partida', partida.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                    <fa-icon icon="eye"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </button>
+    
+                                <button type="submit" [routerLink]="['/partida', partida.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                    <fa-icon icon="pencil-alt"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </button>
+    
+                                <button type="submit" (click)="delete(partida)" class="btn btn-danger btn-sm">
+                                    <fa-icon icon="times"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
                             </div>
                         </div>
                     </div>
