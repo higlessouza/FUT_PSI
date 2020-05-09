@@ -1,0 +1,50 @@
+{
+    "name": "Partida",
+    "fields": [
+        {
+            "fieldName": "golsVisitante",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "golsMandante",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "local",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "time",
+            "otherEntityRelationshipName": "partida",
+            "relationshipName": "mandante",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "time",
+            "otherEntityRelationshipName": "partida",
+            "relationshipName": "visitante",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200509024000",
+    "entityTableName": "partida",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

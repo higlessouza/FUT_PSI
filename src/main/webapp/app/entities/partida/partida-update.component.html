@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-partida-heading" jhiTranslate="futPsiApp.partida.home.createOrEditLabel">Create or edit a Partida</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="futPsiApp.partida.golsVisitante" for="field_golsVisitante">Gols Visitante</label>
+                    <input type="number" class="form-control" name="golsVisitante" id="field_golsVisitante"
+                           formControlName="golsVisitante"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="futPsiApp.partida.golsMandante" for="field_golsMandante">Gols Mandante</label>
+                    <input type="number" class="form-control" name="golsMandante" id="field_golsMandante"
+                           formControlName="golsMandante"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="futPsiApp.partida.local" for="field_local">Local</label>
+                    <input type="text" class="form-control" name="local" id="field_local"
+                           formControlName="local"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="futPsiApp.partida.data" for="field_data">Data</label>
+                    <div class="input-group">
+                        <input id="field_data" type="text" class="form-control" name="data" ngbDatepicker #dataDp="ngbDatepicker" formControlName="data"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="futPsiApp.partida.mandante" for="field_mandante">Mandante</label>
+                    <select class="form-control" id="field_mandante" name="mandante" formControlName="mandante">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="timeOption.id === editForm.get('mandante')!.value?.nome ? editForm.get('mandante')!.value : timeOption" *ngFor="let timeOption of mandantes; trackBy: trackById">{{ timeOption.nome }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="futPsiApp.partida.visitante" for="field_visitante">Visitante</label>
+                    <select class="form-control" id="field_visitante" name="visitante" formControlName="visitante">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="timeOption.nome === editForm.get('visitante')!.value?.nome ? editForm.get('visitante')!.value : timeOption" *ngFor="let timeOption of visitantes; trackBy: trackById">{{ timeOption.nome }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

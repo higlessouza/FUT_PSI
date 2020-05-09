@@ -1,0 +1,27 @@
+{
+  "futPsiApp": {
+    "partida": {
+      "home": {
+        "title": "Partidas",
+        "createLabel": "Criar novo Partida",
+        "createOrEditLabel": "Criar ou editar Partida",
+        "notFound": "Nenhum Partida encontrado"
+      },
+      "created": "Um novo Partida foi criado com o identificador {{ param }}",
+      "updated": "Um Partida foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Partida foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Partida {{ id }}?"
+      },
+      "detail": {
+        "title": "Partida"
+      },
+      "golsVisitante": "Gols Visitante",
+      "golsMandante": "Gols Mandante",
+      "local": "Local",
+      "data": "Data",
+      "mandante": "Mandante",
+      "visitante": "Visitante"
+    }
+  }
+}

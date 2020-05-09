@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="partida">
+            <h2><span jhiTranslate="futPsiApp.partida.detail.title">Partida</span> {{ partida.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="futPsiApp.partida.golsVisitante">Gols Visitante</span></dt>
+                <dd>
+                    <span>{{ partida.golsVisitante }}</span>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.golsMandante">Gols Mandante</span></dt>
+                <dd>
+                    <span>{{ partida.golsMandante }}</span>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.local">Local</span></dt>
+                <dd>
+                    <span>{{ partida.local }}</span>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.data">Data</span></dt>
+                <dd>
+                    <span>{{ partida.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.mandante">Mandante</span></dt>
+                <dd>
+                    <div *ngIf="partida.mandante">
+                        <a [routerLink]="['/time', partida.mandante?.id, 'view']">{{ partida.mandante?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.visitante">Visitante</span></dt>
+                <dd>
+                    <div *ngIf="partida.visitante">
+                        <a [routerLink]="['/time', partida.visitante?.id, 'view']">{{ partida.visitante?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/partida', partida.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "futPsiApp": {
+    "time": {
+      "home": {
+        "title": "Times",
+        "createLabel": "Criar novo Time",
+        "createOrEditLabel": "Criar ou editar Time",
+        "notFound": "Nenhum Time encontrado"
+      },
+      "created": "Um novo Time foi criado com o identificador {{ param }}",
+      "updated": "Um Time foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Time foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Time {{ id }}?"
+      },
+      "detail": {
+        "title": "Time"
+      },
+      "nome": "Nome",
+      "logo": "Logo"
+    }
+  }
+}

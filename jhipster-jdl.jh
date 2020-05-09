@@ -1,0 +1,25 @@
+entity Time {
+    nome String,
+    logo String
+}
+entity Partida {
+	golsVisitante Integer,
+    golsMandante Integer,
+    local String,
+    data LocalDate
+}
+// an ignored comment
+/** not an ignored comment */
+entity Campeonato {
+	nome String,
+	logo String,
+	cidade String,
+}
+relationship OneToOne {
+	Partida{Mandante} to Time,
+    Partida{Visitante} to Time
+}
+// Set pagination options
+paginate Partida, Time, Campeonato with infinite-scroll
+
+

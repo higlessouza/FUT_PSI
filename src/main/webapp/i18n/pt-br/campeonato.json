@@ -1,0 +1,24 @@
+{
+  "futPsiApp": {
+    "campeonato": {
+      "home": {
+        "title": "Campeonatoes",
+        "createLabel": "Criar novo Campeonato",
+        "createOrEditLabel": "Criar ou editar Campeonato",
+        "notFound": "Nenhum Campeonato encontrado"
+      },
+      "created": "Um novo Campeonato foi criado com o identificador {{ param }}",
+      "updated": "Um Campeonato foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Campeonato foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Campeonato {{ id }}?"
+      },
+      "detail": {
+        "title": "Campeonato"
+      },
+      "nome": "Nome",
+      "logo": "Logo",
+      "cidade": "Cidade"
+    }
+  }
+}
