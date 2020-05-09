@@ -2,10 +2,11 @@
     <h2 id="page-heading">
         <span jhiTranslate="futPsiApp.partida.home.title">Partidas</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-partida" [routerLink]="['/partida/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-partida"
+            [routerLink]="['/partida/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="futPsiApp.partida.home.createLabel">
-            Create a new Partida
+            <span jhiTranslate="futPsiApp.partida.home.createLabel">
+                Create a new Partida
             </span>
         </button>
     </h2>
@@ -17,22 +18,67 @@
     <div class="alert alert-warning" id="no-result" *ngIf="partidas?.length === 0">
         <span jhiTranslate="futPsiApp.partida.home.notFound">No partidas found</span>
     </div>
-
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let partida of partidas ;trackBy: trackId">
+                <div class="col">
+                    <div class="card border-secondary mb-3 cardTeam" style="max-width: 18rem;">
+                        <div class="card-header">{{ partida.mandante?.nome }} x {{ partida.visitante?.nome }}
+                        </div>
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title">{{ partida.local }}</h5>
+                            <div id="externa">
+                                <div id="interna">
+                                    <div class="row">
+                                        <img src="{{ partida.mandante?.logo }}" alt="{{ partida.mandante?.nome }}"
+                                            width="50">
+                                        <h1>{{ partida.golsMandante }} x {{ partida.golsVisitante }} </h1>
+                                        <img src="{{ partida.visitante?.logo }}" alt="{{ partida.visitante?.nome }}"
+                                            width="50">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="table-responsive" id="entities" *ngIf="partidas?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="golsVisitante"><span jhiTranslate="futPsiApp.partida.golsVisitante">Gols Visitante</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="golsMandante"><span jhiTranslate="futPsiApp.partida.golsMandante">Gols Mandante</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="local"><span jhiTranslate="futPsiApp.partida.local">Local</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="data"><span jhiTranslate="futPsiApp.partida.data">Data</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="mandante.id"><span jhiTranslate="futPsiApp.partida.mandante">Mandante</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="visitante.id"><span jhiTranslate="futPsiApp.partida.visitante">Visitante</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="golsVisitante"><span jhiTranslate="futPsiApp.partida.golsVisitante">Gols
+                            Visitante</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="golsMandante"><span jhiTranslate="futPsiApp.partida.golsMandante">Gols
+                            Mandante</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="local"><span jhiTranslate="futPsiApp.partida.local">Local</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="data"><span jhiTranslate="futPsiApp.partida.data">Data</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="mandante.id"><span
+                            jhiTranslate="futPsiApp.partida.mandante">Mandante</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="visitante.id"><span
+                            jhiTranslate="futPsiApp.partida.visitante">Visitante</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+                [infiniteScrollDistance]="0">
+
                 <tr *ngFor="let partida of partidas ;trackBy: trackId">
                     <td><a [routerLink]="['/partida', partida.id, 'view']">{{ partida.id }}</a></td>
                     <td>{{ partida.golsVisitante }}</td>
@@ -41,32 +87,29 @@
                     <td>{{ partida.data | date:'mediumDate' }}</td>
                     <td>
                         <div *ngIf="partida.mandante">
-                            <a [routerLink]="['/time', partida.mandante?.id, 'view']" >{{ partida.mandante?.nome }}</a>
+                            <a [routerLink]="['/time', partida.mandante?.id, 'view']">{{ partida.mandante?.nome }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="partida.visitante">
-                            <a [routerLink]="['/time', partida.visitante?.id, 'view']" >{{ partida.visitante?.nome }}</a>
+                            <a [routerLink]="['/time', partida.visitante?.id, 'view']">{{ partida.visitante?.nome }}</a>
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/partida', partida.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['/partida', partida.id, 'view']"
+                                class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/partida', partida.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/partida', partida.id, 'edit']"
+                                class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(partida)"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" (click)="delete(partida)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
