@@ -36,6 +36,12 @@
                         <a [routerLink]="['/time', partida.visitante?.id, 'view']">{{ partida.visitante?.id }}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.campeonato">Campeonato</span></dt>
+                <dd>
+                    <div *ngIf="partida.campeonato">
+                        <a [routerLink]="['/campeonato', partida.campeonato?.id, 'view']">{{ partida.campeonato?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

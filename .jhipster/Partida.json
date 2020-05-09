@@ -34,6 +34,15 @@
             "relationshipName": "visitante",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "campeonato",
+            "otherEntityName": "campeonato",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": false,
+            "otherEntityRelationshipName": "partida"
         }
     ],
     "changelogDate": "20200509024000",
@@ -46,5 +55,7 @@
     "readOnly": false,
     "embedded": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

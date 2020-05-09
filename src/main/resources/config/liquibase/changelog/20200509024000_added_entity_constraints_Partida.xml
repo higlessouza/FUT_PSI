@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="time"/>
 
+        <addForeignKeyConstraint baseColumnNames="campeonato_id"
+                                 baseTableName="partida"
+                                 constraintName="fk_partida_campeonato_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="campeonato"/>
+
     </changeSet>
 </databaseChangeLog>

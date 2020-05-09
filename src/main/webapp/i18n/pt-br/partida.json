@@ -21,7 +21,8 @@
       "local": "Local",
       "data": "Data",
       "mandante": "Mandante",
-      "visitante": "Visitante"
+      "visitante": "Visitante",
+      "campeonato": "Campeonato"
     }
   }
 }

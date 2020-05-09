@@ -10,6 +10,10 @@ import { IPartida, Partida } from 'app/shared/model/partida.model';
 import { PartidaService } from './partida.service';
 import { ITime } from 'app/shared/model/time.model';
 import { TimeService } from 'app/entities/time/time.service';
+import { ICampeonato } from 'app/shared/model/campeonato.model';
+import { CampeonatoService } from 'app/entities/campeonato/campeonato.service';
+
+type SelectableEntity = ITime | ICampeonato;
 
 @Component({
   selector: 'jhi-partida-update',
@@ -19,6 +23,7 @@ export class PartidaUpdateComponent implements OnInit {
   isSaving = false;
   mandantes: ITime[] = [];
   visitantes: ITime[] = [];
+  campeonatoes: ICampeonato[] = [];
   dataDp: any;
 
   editForm = this.fb.group({
@@ -28,12 +33,14 @@ export class PartidaUpdateComponent implements OnInit {
     local: [],
     data: [],
     mandante: [],
-    visitante: []
+    visitante: [],
+    campeonato: []
   });
 
   constructor(
     protected partidaService: PartidaService,
     protected timeService: TimeService,
+    protected campeonatoService: CampeonatoService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -85,6 +92,28 @@ export class PartidaUpdateComponent implements OnInit {
               .subscribe((concatRes: ITime[]) => (this.visitantes = concatRes));
           }
         });
+
+      this.campeonatoService
+        .query({ filter: 'partida-is-null' })
+        .pipe(
+          map((res: HttpResponse<ICampeonato[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: ICampeonato[]) => {
+          if (!partida.campeonato || !partida.campeonato.id) {
+            this.campeonatoes = resBody;
+          } else {
+            this.campeonatoService
+              .find(partida.campeonato.id)
+              .pipe(
+                map((subRes: HttpResponse<ICampeonato>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: ICampeonato[]) => (this.campeonatoes = concatRes));
+          }
+        });
     });
   }
 
@@ -96,7 +125,8 @@ export class PartidaUpdateComponent implements OnInit {
       local: partida.local,
       data: partida.data,
       mandante: partida.mandante,
-      visitante: partida.visitante
+      visitante: partida.visitante,
+      campeonato: partida.campeonato
     });
   }
 
@@ -123,7 +153,8 @@ export class PartidaUpdateComponent implements OnInit {
       local: this.editForm.get(['local'])!.value,
       data: this.editForm.get(['data'])!.value,
       mandante: this.editForm.get(['mandante'])!.value,
-      visitante: this.editForm.get(['visitante'])!.value
+      visitante: this.editForm.get(['visitante'])!.value,
+      campeonato: this.editForm.get(['campeonato'])!.value
     };
   }
 
@@ -143,7 +174,7 @@ export class PartidaUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: ITime): any {
-    return item.nome;
+  trackById(index: number, item: SelectableEntity): any {
+    return item.id;
   }
 }
