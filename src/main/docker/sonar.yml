@@ -1,0 +1,7 @@
+version: '2'
+services:
+  fut_psi-sonar:
+    image: sonarqube:8.2-community
+    ports:
+      - 9001:9000
+      - 9092:9092
