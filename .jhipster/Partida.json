@@ -43,6 +43,15 @@
             "ownerSide": true,
             "useJPADerivedIdentifier": false,
             "otherEntityRelationshipName": "partida"
+        },
+        {
+            "relationshipName": "plataforma",
+            "otherEntityName": "plataforma",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": false,
+            "otherEntityRelationshipName": "partida"
         }
     ],
     "changelogDate": "20200509024000",

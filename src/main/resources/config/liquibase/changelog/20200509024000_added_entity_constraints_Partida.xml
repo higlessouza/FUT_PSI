@@ -26,5 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="campeonato"/>
 
+        <addForeignKeyConstraint baseColumnNames="plataforma_id"
+                                 baseTableName="partida"
+                                 constraintName="fk_partida_plataforma_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="plataforma"/>
+
     </changeSet>
 </databaseChangeLog>

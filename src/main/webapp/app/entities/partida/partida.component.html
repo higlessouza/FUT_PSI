@@ -23,7 +23,10 @@
             <div *ngFor="let partida of partidas ;trackBy: trackId">
                 <div class="col">
                     <div class="card border-secondary mb-3 cardTeam">
-                        <div class="card-header">{{ partida.mandante?.nome }} x {{ partida.visitante?.nome }}
+                        <div class="card-header">
+                            <img class="imgPretoBranco" src="{{partida.plataforma?.logo }}"
+                                alt="{{partida.plataforma?.nome }}" width="30">
+                            {{ partida.mandante?.nome }} x {{ partida.visitante?.nome }}
                         </div>
                         <div class="card-body text-secondary">
                             <h5 class="card-title">{{ partida.local }}</h5>
@@ -44,21 +47,28 @@
                                     <fa-icon icon="eye"></fa-icon>
                                     <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                                 </button>
-    
+
                                 <button type="submit" [routerLink]="['/partida', partida.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                     <fa-icon icon="pencil-alt"></fa-icon>
                                     <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                                 </button>
-    
+
                                 <button type="submit" (click)="delete(partida)" class="btn btn-danger btn-sm">
                                     <fa-icon icon="times"></fa-icon>
                                     <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                                 </button>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgloboesporte.globo.com%2F&amp;src=sdkpreparse"
+                                    class="fb-xfbml-parse-ignore" class="btn btn-primary btn-sm" target="_blank">
+                                    <img class="imgBranca"
+                                        src="https://i.ya-webdesign.com/images/facebook-symbol-png-2.png"
+                                        alt="{{partida.plataforma?.nome }}" height="25">
+                                </a>
                             </div>
                         </div>
                         <div class="card-header">
-                            <img src="{{partida.campeonato?.logo }}" alt="{{partida.campeonato?.nome }}" width="50">
+                            <img class="imgPretoBranco" src="{{partida.campeonato?.logo }}"
+                                alt="{{partida.campeonato?.nome }}" width="50">
                             {{ partida.campeonato?.nome }}
                         </div>
                     </div>

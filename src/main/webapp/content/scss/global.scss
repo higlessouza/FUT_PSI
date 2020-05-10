@@ -207,3 +207,20 @@ ui bootstrap tweaks
 .interna {
   display: inline-block;
 }
+
+.imgPretoBranco {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray; /* IE */
+}
+
+.imgPretoBranco:hover {
+  -webkit-filter: none;
+  filter: none;
+}
+
+.imgBranca {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  filter: rgb(255, 255, 255); /* IE */
+}

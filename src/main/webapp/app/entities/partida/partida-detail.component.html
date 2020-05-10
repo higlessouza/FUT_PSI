@@ -42,6 +42,12 @@
                         <a [routerLink]="['/campeonato', partida.campeonato?.id, 'view']">{{ partida.campeonato?.id }}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.plataforma">Plataforma</span></dt>
+                <dd>
+                    <div *ngIf="partida.plataforma">
+                        <a [routerLink]="['/plataforma', partida.plataforma?.id, 'view']">{{ partida.plataforma?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
