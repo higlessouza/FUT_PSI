@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'campeonato',
         loadChildren: () => import('./campeonato/campeonato.module').then(m => m.FutPsiCampeonatoModule)
+      },
+      {
+        path: 'plataforma',
+        loadChildren: () => import('./plataforma/plataforma.module').then(m => m.FutPsiPlataformaModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

@@ -1,0 +1,24 @@
+{
+  "futPsiApp": {
+    "plataforma": {
+      "home": {
+        "title": "Plataformas",
+        "createLabel": "Criar novo Plataforma",
+        "createOrEditLabel": "Criar ou editar Plataforma",
+        "notFound": "Nenhum Plataforma encontrado"
+      },
+      "created": "Um novo Plataforma foi criado com o identificador {{ param }}",
+      "updated": "Um Plataforma foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Plataforma foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Plataforma {{ id }}?"
+      },
+      "detail": {
+        "title": "Plataforma"
+      },
+      "nome": "Nome",
+      "logo": "Logo",
+      "marca": "Marca"
+    }
+  }
+}

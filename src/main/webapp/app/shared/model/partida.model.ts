@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { ITime } from 'app/shared/model/time.model';
 import { ICampeonato } from 'app/shared/model/campeonato.model';
+import { IPlataforma } from 'app/shared/model/plataforma.model';
 
 export interface IPartida {
   id?: number;
@@ -11,6 +12,7 @@ export interface IPartida {
   mandante?: ITime;
   visitante?: ITime;
   campeonato?: ICampeonato;
+  plataforma?: IPlataforma;
 }
 
 export class Partida implements IPartida {
@@ -22,6 +24,7 @@ export class Partida implements IPartida {
     public data?: Moment,
     public mandante?: ITime,
     public visitante?: ITime,
-    public campeonato?: ICampeonato
+    public campeonato?: ICampeonato,
+    public plataforma?: IPlataforma
   ) {}
 }

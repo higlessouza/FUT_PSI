@@ -22,7 +22,8 @@
       "data": "Data",
       "mandante": "Mandante",
       "visitante": "Visitante",
-      "campeonato": "Campeonato"
+      "campeonato": "Campeonato",
+      "plataforma": "Plataforma"
     }
   }
 }

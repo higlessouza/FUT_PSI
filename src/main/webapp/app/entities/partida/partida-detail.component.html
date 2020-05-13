@@ -22,7 +22,7 @@
                 </dd>
                 <dt><span jhiTranslate="futPsiApp.partida.data">Data</span></dt>
                 <dd>
-                    <span>{{ partida.data }}</span>
+                    {{ partida.data }}
                 </dd>
                 <dt><span jhiTranslate="futPsiApp.partida.mandante">Mandante</span></dt>
                 <dd>
@@ -40,6 +40,12 @@
                 <dd>
                     <div *ngIf="partida.campeonato">
                         <a [routerLink]="['/campeonato', partida.campeonato?.id, 'view']">{{ partida.campeonato?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.partida.plataforma">Plataforma</span></dt>
+                <dd>
+                    <div *ngIf="partida.plataforma">
+                        <a [routerLink]="['/plataforma', partida.plataforma?.id, 'view']">{{ partida.plataforma?.id }}</a>
                     </div>
                 </dd>
             </dl>

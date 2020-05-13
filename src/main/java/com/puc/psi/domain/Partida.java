@@ -44,6 +44,10 @@ public class Partida implements Serializable {
     @JoinColumn(unique = true)
     private Campeonato campeonato;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Plataforma plataforma;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -142,6 +146,19 @@ public class Partida implements Serializable {
 
     public void setCampeonato(Campeonato campeonato) {
         this.campeonato = campeonato;
+    }
+
+    public Plataforma getPlataforma() {
+        return plataforma;
+    }
+
+    public Partida plataforma(Plataforma plataforma) {
+        this.plataforma = plataforma;
+        return this;
+    }
+
+    public void setPlataforma(Plataforma plataforma) {
+        this.plataforma = plataforma;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

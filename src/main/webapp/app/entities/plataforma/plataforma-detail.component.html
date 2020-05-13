@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="plataforma">
+            <h2><span jhiTranslate="futPsiApp.plataforma.detail.title">Plataforma</span> {{ plataforma.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="futPsiApp.plataforma.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ plataforma.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.plataforma.logo">Logo</span></dt>
+                <dd>
+                    <span>{{ plataforma.logo }}</span>
+                </dd>
+                <dt><span jhiTranslate="futPsiApp.plataforma.marca">Marca</span></dt>
+                <dd>
+                    <span>{{ plataforma.marca }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plataforma', plataforma.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

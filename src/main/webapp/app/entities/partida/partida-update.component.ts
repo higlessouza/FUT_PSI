@@ -12,8 +12,10 @@ import { ITime } from 'app/shared/model/time.model';
 import { TimeService } from 'app/entities/time/time.service';
 import { ICampeonato } from 'app/shared/model/campeonato.model';
 import { CampeonatoService } from 'app/entities/campeonato/campeonato.service';
+import { IPlataforma } from 'app/shared/model/plataforma.model';
+import { PlataformaService } from 'app/entities/plataforma/plataforma.service';
 
-type SelectableEntity = ITime | ICampeonato;
+type SelectableEntity = ITime | ICampeonato | IPlataforma;
 
 @Component({
   selector: 'jhi-partida-update',
@@ -24,6 +26,7 @@ export class PartidaUpdateComponent implements OnInit {
   mandantes: ITime[] = [];
   visitantes: ITime[] = [];
   campeonatoes: ICampeonato[] = [];
+  plataformas: IPlataforma[] = [];
   dataDp: any;
 
   editForm = this.fb.group({
@@ -34,13 +37,15 @@ export class PartidaUpdateComponent implements OnInit {
     data: [],
     mandante: [],
     visitante: [],
-    campeonato: []
+    campeonato: [],
+    plataforma: []
   });
 
   constructor(
     protected partidaService: PartidaService,
     protected timeService: TimeService,
     protected campeonatoService: CampeonatoService,
+    protected plataformaService: PlataformaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -114,6 +119,28 @@ export class PartidaUpdateComponent implements OnInit {
               .subscribe((concatRes: ICampeonato[]) => (this.campeonatoes = concatRes));
           }
         });
+
+      this.plataformaService
+        .query({ filter: 'partida-is-null' })
+        .pipe(
+          map((res: HttpResponse<IPlataforma[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IPlataforma[]) => {
+          if (!partida.plataforma || !partida.plataforma.id) {
+            this.plataformas = resBody;
+          } else {
+            this.plataformaService
+              .find(partida.plataforma.id)
+              .pipe(
+                map((subRes: HttpResponse<IPlataforma>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IPlataforma[]) => (this.plataformas = concatRes));
+          }
+        });
     });
   }
 
@@ -126,7 +153,8 @@ export class PartidaUpdateComponent implements OnInit {
       data: partida.data,
       mandante: partida.mandante,
       visitante: partida.visitante,
-      campeonato: partida.campeonato
+      campeonato: partida.campeonato,
+      plataforma: partida.plataforma
     });
   }
 
@@ -154,7 +182,8 @@ export class PartidaUpdateComponent implements OnInit {
       data: this.editForm.get(['data'])!.value,
       mandante: this.editForm.get(['mandante'])!.value,
       visitante: this.editForm.get(['visitante'])!.value,
-      campeonato: this.editForm.get(['campeonato'])!.value
+      campeonato: this.editForm.get(['campeonato'])!.value,
+      plataforma: this.editForm.get(['plataforma'])!.value
     };
   }
 

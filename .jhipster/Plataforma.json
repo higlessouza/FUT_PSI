@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marca",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20200510224651",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "plataforma",
+    "databaseType": "sql",
+    "readOnly": false,
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}
