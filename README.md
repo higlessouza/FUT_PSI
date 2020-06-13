@@ -1,6 +1,14 @@
 # FUT_PSI
 
-This application was generated using JHipster 6.8.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.8.0](https://www.jhipster.tech/documentation-archive/v6.8.0).
+This application was generated using JHipster 6.8.0, was developed as the final work of the PSI discipline.
+
+## Developer By
+Halison Xavier, Higles Souza, João Pedro, Luigi Eduardo, Luiz Eduardo e Thalles Viana.
+
+##Database 
+
+Paste the database backup available at the link below in "FUT_PSI\build\h2db"
+https://drive.google.com/drive/folders/14WzrNUPzdIEJyYk56Wh9laEzMHJBYrst?usp=sharing
 
 ## Development
 
